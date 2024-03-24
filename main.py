@@ -65,17 +65,17 @@ if resume is not None:
 
     pdf = create_pdf(generated_text)
     word = create_word(generated_text);
-    
+ 
     word_bytes = BytesIO()
     word.save(word_bytes)
     word_bytes.seek(0)
     
     col1,col2 = st.columns([10,10])
     with col1:
-        st.download_button(label="Download Word", data=word_bytes.getvalue(), file_name="CoverLetter.docx", mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document")
+        st.download_button(label="Download Word", data=word_bytes.getvalue(), file_name=f"{companyName}-CoverLetter.docx", mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document")
     
     with col2:
-        st.download_button(label="Download PDF",data=pdf.output(dest='S').encode('latin1'),file_name="CoverLetter.pdf",mime="application/pdf")
-        
+        st.download_button(label="Download PDF",data=pdf.output(dest='S').encode('latin1'),file_name=f"{companyName}-CoverLetter.pdf",mime="application/pdf")
+    st.success("Cover letter successfully generated!")       
 
     
