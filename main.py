@@ -70,12 +70,13 @@ if resume is not None:
     word.save(word_bytes)
     word_bytes.seek(0)
     
+    st.success("Cover letter successfully generated!")       
+    
     col1,col2 = st.columns([10,10])
     with col1:
         st.download_button(label="Download Word", data=word_bytes.getvalue(), file_name=f"{companyName}-CoverLetter.docx", mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document")
     
     with col2:
         st.download_button(label="Download PDF",data=pdf.output(dest='S').encode('latin1'),file_name=f"{companyName}-CoverLetter.pdf",mime="application/pdf")
-    st.success("Cover letter successfully generated!")       
 
     
